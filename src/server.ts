@@ -2,6 +2,8 @@ import fastify from 'fastify';
 import { createClient } from '@supabase/supabase-js';
 import 'dotenv/config';
 import { BooksQuerystring, CharacterQuerystring, MoviesQuerystring, PotionsQuerystring, SpellsQuerystring } from './types';
+import Swagger from '@fastify/swagger'
+import SwaggerUI from '@fastify/swagger-ui'
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
   throw new Error('Supabase credentials not found in environment variables');
@@ -17,6 +19,22 @@ const serverOptions = {
 };
 
 const server = fastify(serverOptions);
+
+server.register(Swagger, {
+  swagger: {
+    info: {
+      title: 'Harry Potter API',
+      description: 'Harry Potter API',
+      version: '1.0.0',
+    },
+    consumes: ['application/json'],
+    produces: ['application/json'],
+  },
+})
+
+server.register(SwaggerUI, {
+  routePrefix: '/',
+});
 
 server.get<{
   Querystring: CharacterQuerystring;
@@ -316,7 +334,51 @@ server.get<{
 
 server.get<{
   Querystring: SpellsQuerystring;
-}>('/spells', async (req, res) => {
+}>('/spells', {
+  schema: {
+    description: 'Get all spells',
+    tags: ['Spells'],
+    summary: 'Get all spells',
+    querystring: {
+      id: { type: 'string' },
+      slug: { type: 'string' },
+      name: { type: 'string' },
+      incantation: { type: 'string' },
+      category: { type: 'string' },
+      effect: { type: 'string' },
+      light: { type: 'string' },
+      hand: { type: 'string' },
+      creator: { type: 'string' },
+      image: { type: 'string' },
+      wiki: { type: 'string' },
+      sort: { type: 'string' },
+      order: { type: 'string' },
+      page: { type: 'number' },
+      size: { type: 'number' },
+    },
+    response: {
+      200: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            id: { type: 'string' },
+            slug: { type: 'string' },
+            name: { type: 'string' },
+            incantation: { type: 'string' },
+            category: { type: 'string' },
+            effect: { type: 'string' },
+            light: { type: 'string' },
+            hand: { type: 'string' },
+            creator: { type: 'string' },
+            image: { type: 'string' },
+            wiki: { type: 'string' },
+          },
+        },
+      },
+    },
+  }
+} , async (req, res) => {
   const {
     id,
     slug,

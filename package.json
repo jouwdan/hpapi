@@ -4,16 +4,18 @@
   "description": "Fastify API that queries a Supabase database for harry potter related data",
   "main": "src/server.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "rm -rf .build && tsc -p tsconfig.json",
     "start": "node .build/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "rm -rf .build && tsc-watch --onSuccess \"node .build/src/server.js\""
+    "dev": "tsx watch src/server.ts"
   },
   "author": "Jordan Harrison",
   "license": "MIT",
   "type": "module",
   "dependencies": {
     "@fastify/autoload": "5.7.1",
+    "@fastify/swagger": "8.5.1",
+    "@fastify/swagger-ui": "1.9.0",
     "@supabase/supabase-js": "2.25.0",
     "dotenv": "16.2.0",
     "fastify": "4.18.0",
