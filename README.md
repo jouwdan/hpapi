@@ -18,7 +18,7 @@ If you need any support feel free to open a [GitHub issues](#) or ask your quest
 
 This repository was set up by [Jordan Harrison](https://github.com/jouwdan).
 
-For a full list of all authors and contributors, see [the contributors page](https://github.com/danielschuster-muc/potter-db/contributors).
+For a full list of all authors and contributors, see [the contributors page](https://github.com/jouwdan/hpapi/contributors).
 
 ## License
 
