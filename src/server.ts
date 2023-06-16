@@ -74,6 +74,15 @@ server.get<{
   return { data: characters, error };
 });
 
-server.listen({ port: 8080, host: '0.0.0.0' }).then((address: string) => {
-  console.log(`server listening on ${address}`);
-});
+if (process.env.NODE_ENV === 'dev') {
+  server.listen({ port: 8080, host: '0.0.0.0' }).then((address: string) => {
+    console.log(`server listening on ${address}`);
+  });
+} else if (process.env.NODE_ENV === 'prod') {
+  server.listen({ port: 443, host: '0.0.0.0' }).then((address: string) => {
+    console.log(`server listening on ${address}`);
+  });
+} else {
+  throw new Error('NODE_ENV must be either dev or prod');
+}
+
