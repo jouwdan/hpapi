@@ -125,7 +125,7 @@ server.get<{
     cover,
     wiki,
     chapters,
-    sort = 'name',
+    sort = 'release_date',
     order = 'asc',
     page,
     size,
