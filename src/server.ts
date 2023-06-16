@@ -131,7 +131,7 @@ server.get<{
     size,
   } = req.query;
 
-  let query = supabase.from('characters').select('*');
+  let query = supabase.from('books').select('*');
 
   const filterField = (field: any, value: any) => {
     if (value) {
