@@ -18,12 +18,77 @@ const serverOptions = {
 const server = fastify(serverOptions);
 
 server.get<{
-  Querystring: { name?: string; gender?: string, born?: string, died?: string, species?: string, sort?: string, order?: string, page?: number; size?: number };
+  Querystring: {
+    id?: string;
+    name?: string;
+    gender?: string;
+    born?: string;
+    died?: string;
+    species?: string;
+    height?: string;
+    weight?: string;
+    hair_color?: string;
+    eye_color?: string;
+    skin_color?: string;
+    blood_status?: string;
+    marital_status?: string;
+    nationality?: string;
+    animagus?: string;
+    boggart?: string;
+    house?: string;
+    patronus?: string;
+    alias_names?: string;
+    jobs?: string;
+    family_members?: string;
+    romances?: string;
+    wands?: string;
+    image?: string;
+    wiki?: string;
+    titles?: string;
+    sort?: string;
+    order?: string;
+    page?: number;
+    size?: number;
+  };
 }>('/characters', async (req, res) => {
-  
-  const { name, gender, born, died, species, sort = 'name', order = 'asc', page, size } = req.query;
+  const {
+    id,
+    name,
+    gender,
+    born,
+    died,
+    species,
+    height,
+    weight,
+    hair_color,
+    eye_color,
+    skin_color,
+    blood_status,
+    marital_status,
+    nationality,
+    animagus,
+    boggart,
+    house,
+    patronus,
+    alias_names,
+    jobs,
+    family_members,
+    romances,
+    wands,
+    image,
+    wiki,
+    titles,
+    sort = 'name',
+    order = 'asc',
+    page,
+    size,
+  } = req.query;
 
   let query = supabase.from('characters').select('*');
+
+  if (id) {
+    query = query.filter('id', 'ilike', `%${id}%`);
+  }
 
   if (name) {
     query = query.filter('name', 'ilike', `%${name}%`);
@@ -43,6 +108,86 @@ server.get<{
 
   if (species) {
     query = query.filter('species', 'ilike', `%${species}%`);
+  }
+
+  if (height) {
+    query = query.filter('height', 'ilike', `%${height}%`);
+  }
+
+  if (weight) {
+    query = query.filter('weight', 'ilike', `%${weight}%`);
+  }
+
+  if (hair_color) {
+    query = query.filter('hair_color', 'ilike', `%${hair_color}%`);
+  }
+
+  if (eye_color) {
+    query = query.filter('eye_color', 'ilike', `%${eye_color}%`);
+  }
+
+  if (skin_color) {
+    query = query.filter('skin_color', 'ilike', `%${skin_color}%`);
+  }
+
+  if (blood_status) {
+    query = query.filter('blood_status', 'ilike', `%${blood_status}%`);
+  }
+
+  if (marital_status) {
+    query = query.filter('marital_status', 'ilike', `%${marital_status}%`);
+  }
+
+  if (nationality) {
+    query = query.filter('nationality', 'ilike', `%${nationality}%`)
+  }
+
+  if (animagus) {
+    query = query.filter('animagus', 'ilike', `%${animagus}%`);
+  }
+
+  if (boggart) {
+    query = query.filter('boggart', 'ilike', `%${boggart}%`);
+  }
+
+  if (house) {
+    query = query.filter('house', 'ilike', `%${house}%`);
+  }
+
+  if (patronus) {
+    query = query.filter('patronus', 'ilike', `%${patronus}%`);
+  }
+
+  if (alias_names) {
+    query = query.filter('alias_names', 'ilike', `%${alias_names}%`);
+  }
+
+  if (jobs) {
+    query = query.filter('jobs', 'ilike', `%${jobs}%`);
+  }
+
+  if (family_members) {
+    query = query.filter('family_members', 'ilike', `%${family_members}%`);
+  }
+
+  if (romances) {
+    query = query.filter('romances', 'ilike', `%${romances}%`);
+  }
+
+  if (wands) {
+    query = query.filter('wands', 'ilike', `%${wands}%`);
+  }
+
+  if (image) {
+    query = query.filter('image', 'ilike', `%${image}%`);
+  }
+
+  if (wiki) {
+    query = query.filter('wiki', 'ilike', `%${wiki}%`);
+  }
+
+  if (titles) {
+    query = query.filter('titles', 'ilike', `%${titles}%`);
   }
   
   if (order) {
