@@ -21,13 +21,6 @@ const app: FastifyPluginAsync<AppOptions> = async (
       },
       consumes: ['application/json'],
       produces: ['application/json'],
-      tags: [
-        { name: 'characters', description: 'Character related end-points' },
-        { name: 'potions', description: 'Potion related end-points' },
-        { name: 'spells', description: 'Spell related end-points' },
-        { name: 'books', description: 'Book related end-points' },
-        { name: 'movies', description: 'Movie related end-points' }
-      ],
     },
   })
 
