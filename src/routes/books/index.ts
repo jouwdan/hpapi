@@ -4,7 +4,29 @@ import { BooksQuerystring } from "./types"
 const books: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.get<{
     Querystring: BooksQuerystring;
-  }>('/', async (req, res) => {
+  }>('/', {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          title: { type: 'string' },
+          summary: { type: 'string' },
+          author: { type: 'string' },
+          release_date: { type: 'string' },
+          dedication: { type: 'string' },
+          pages: { type: 'string' },
+          cover: { type: 'string' },
+          wiki: { type: 'string' },
+          chapters: { type: 'string' },
+          sort: { type: 'string' },
+          order: { type: 'string' },
+          page: { type: 'number' },
+          size: { type: 'number' },
+        },
+      },
+    },
+  }, async (req, res) => {
     const {
       id,
       title,

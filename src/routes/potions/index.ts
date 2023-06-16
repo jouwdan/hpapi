@@ -4,7 +4,31 @@ import { PotionsQuerystring } from "./types"
 const potions: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.get<{
     Querystring: PotionsQuerystring;
-  }>('/', async (req, res) => {
+  }>('/', {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          name: { type: 'string' },
+          effect: { type: 'string' },
+          side_effects: { type: 'string' },
+          characteristics: { type: 'string' },
+          time: { type: 'string' },
+          difficulty: { type: 'string' },
+          ingredients: { type: 'string' },
+          inventors: { type: 'string' },
+          manufacturers: { type: 'string' },
+          image: { type: 'string' },
+          wiki: { type: 'string' },
+          sort: { type: 'string' },
+          order: { type: 'string' },
+          page: { type: 'number' },
+          size: { type: 'number' },
+        },
+      },
+    },
+  },async (req, res) => {
     const {
       id,
       name,

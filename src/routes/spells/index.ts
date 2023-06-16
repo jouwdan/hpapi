@@ -4,7 +4,30 @@ import { SpellsQuerystring } from "./types"
 const spells: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.get<{
     Querystring: SpellsQuerystring;
-  }>('/', async (req, res) => {
+  }>('/', {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          slug: { type: 'string' },
+          name: { type: 'string' },
+          incantation: { type: 'string' },
+          category: { type: 'string' },
+          effect: { type: 'string' },
+          light: { type: 'string' },
+          hand: { type: 'string' },
+          creator: { type: 'string' },
+          image: { type: 'string' },
+          wiki: { type: 'string' },
+          sort: { type: 'string' },
+          order: { type: 'string' },
+          page: { type: 'number' },
+          size: { type: 'number' },
+        },
+      },
+    },
+  },async (req, res) => {
     const {
       id,
       slug,

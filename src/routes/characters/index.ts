@@ -4,7 +4,45 @@ import { CharactersQuerystring } from "./types"
 const characters: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.get<{
     Querystring: CharactersQuerystring;
-  }>('/', async (req, res) => {
+  }>('/', {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          name: { type: 'string' },
+          gender: { type: 'string' },
+          born: { type: 'string' },
+          died: { type: 'string' },
+          species: { type: 'string' },
+          height: { type: 'string' },
+          weight: { type: 'string' },
+          hair_color: { type: 'string' },
+          eye_color: { type: 'string' },
+          skin_color: { type: 'string' },
+          blood_status: { type: 'string' },
+          marital_status: { type: 'string' },
+          nationality: { type: 'string' },
+          animagus: { type: 'string' },
+          boggart: { type: 'string' },
+          house: { type: 'string' },
+          patronus: { type: 'string' },
+          alias_names: { type: 'string' },
+          jobs: { type: 'string' },
+          family_members: { type: 'string' },
+          romances: { type: 'string' },
+          wands: { type: 'string' },
+          image: { type: 'string' },
+          wiki: { type: 'string' },
+          titles: { type: 'string' },
+          sort: { type: 'string' },
+          order: { type: 'string' },
+          page: { type: 'number' },
+          size: { type: 'number' },
+        },
+      },
+    },
+  },async (req, res) => {
     const {
       id,
       name,

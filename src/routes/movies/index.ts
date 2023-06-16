@@ -4,7 +4,37 @@ import { MoviesQuerystring } from "./types"
 const movies: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.get<{
     Querystring: MoviesQuerystring;
-  }>('/', async (req, res) => {
+  }>('/', {
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          title: { type: 'string' },
+          summary: { type: 'string' },
+          directors: { type: 'string' },
+          screenwriters: { type: 'string' },
+          producers: { type: 'string' },
+          cinematographers: { type: 'string' },
+          editors: { type: 'string' },
+          distributors: { type: 'string' },
+          music_composers: { type: 'string' },
+          release_date: { type: 'string' },
+          running_time: { type: 'string' },
+          budget: { type: 'string' },
+          box_office: { type: 'string' },
+          rating: { type: 'string' },
+          trailer: { type: 'string' },
+          poster: { type: 'string' },
+          wiki: { type: 'string' },
+          sort: { type: 'string' },
+          order: { type: 'string' },
+          page: { type: 'number' },
+          size: { type: 'number' },
+        },
+      },
+    },
+  },async (req, res) => {
     const {
       id,
       title,
