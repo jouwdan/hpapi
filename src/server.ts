@@ -1,6 +1,7 @@
 import fastify from 'fastify';
 import { createClient } from '@supabase/supabase-js';
 import 'dotenv/config';
+import { CharacterQuerystring } from './types';
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
   throw new Error('Supabase credentials not found in environment variables');
@@ -18,38 +19,7 @@ const serverOptions = {
 const server = fastify(serverOptions);
 
 server.get<{
-  Querystring: {
-    id?: string;
-    name?: string;
-    gender?: string;
-    born?: string;
-    died?: string;
-    species?: string;
-    height?: string;
-    weight?: string;
-    hair_color?: string;
-    eye_color?: string;
-    skin_color?: string;
-    blood_status?: string;
-    marital_status?: string;
-    nationality?: string;
-    animagus?: string;
-    boggart?: string;
-    house?: string;
-    patronus?: string;
-    alias_names?: string;
-    jobs?: string;
-    family_members?: string;
-    romances?: string;
-    wands?: string;
-    image?: string;
-    wiki?: string;
-    titles?: string;
-    sort?: string;
-    order?: string;
-    page?: number;
-    size?: number;
-  };
+  Querystring: CharacterQuerystring;
 }>('/characters', async (req, res) => {
   const {
     id,
