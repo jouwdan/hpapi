@@ -1,7 +1,7 @@
 import fastify from 'fastify';
 import { createClient } from '@supabase/supabase-js';
 import 'dotenv/config';
-import { BooksQuerystring, CharacterQuerystring, MoviesQuerystring, PotionsQuerystring } from './types';
+import { BooksQuerystring, CharacterQuerystring, MoviesQuerystring, PotionsQuerystring, SpellsQuerystring } from './types';
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
   throw new Error('Supabase credentials not found in environment variables');
@@ -312,6 +312,69 @@ server.get<{
 
   const { data: potions, error } = await query;
   return { data: potions, error };
+});
+
+server.get<{
+  Querystring: SpellsQuerystring;
+}>('/spells', async (req, res) => {
+  const {
+    id,
+    slug,
+    name,
+    incantation,
+    category,
+    effect,
+    light,
+    hand,
+    creator,
+    image,
+    wiki,
+    sort = 'title',
+    order = 'asc',
+    page,
+    size,
+  } = req.query;
+
+  let query = supabase.from('spells').select('*');
+
+  const filterField = (field: any, value: any) => {
+    if (value) {
+      query = query.filter(field, 'ilike', `%${value}%`);
+    }
+  };
+
+  filterField('id', id);
+  filterField('slug', slug);
+  filterField('name', name);
+  filterField('incantation', incantation);
+  filterField('category', category);
+  filterField('effect', effect);
+  filterField('light', light);
+  filterField('hand', hand);
+  filterField('creator', creator);
+  filterField('image', image);
+  filterField('wiki', wiki);
+
+  if (order) {
+    if (order === 'asc') {
+      query = query.order(sort);
+    } else if (order === 'desc') {
+      query = query.order(sort, { ascending: false });
+    } else {
+      throw new Error('order must be either asc or desc');
+    }
+  }
+
+  if (page || size) {
+    if (page && size) {
+      query = query.range(page - 1, page * size - 1);
+    } else {
+      throw new Error('page and size must be provided together');
+    }
+  }
+
+  const { data: spells, error } = await query;
+  return { data: spells, error };
 });
 
 const port = process.env.NODE_ENV === 'prod' ? 443 : 8080;
