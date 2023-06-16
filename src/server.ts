@@ -20,15 +20,8 @@ const server = fastify(serverOptions);
 server.get<{
   Querystring: { name?: string; gender?: string, born?: string, died?: string, species?: string, sort?: string, order?: string, page?: number; size?: number };
 }>('/characters', async (req, res) => {
-  const name = req.query.name;
-  const gender = req.query.gender;
-  const born = req.query.born;
-  const died = req.query.died;
-  const species = req.query.species;
-  const sort = req.query.sort || 'name';
-  const order = req.query.order || 'asc';
-  const page = req.query.page;
-  const size = req.query.size;
+  
+  const { name, gender, born, died, species, sort = 'name', order = 'asc', page, size } = req.query;
 
   let query = supabase.from('characters').select('*');
 
