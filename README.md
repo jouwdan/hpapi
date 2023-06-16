@@ -17,12 +17,11 @@ If you would like to work on this, you will need to set up the data on your own 
 3. Create a new table for each csv file in the `data` folder
 4. Import the csv files into the tables
 5. Create a new `.env` file in the root of the project and add the following variables:
-    - `NODE_ENV` - Set this to `dev`
     - `SUPABASE_URL` - The URL of your Supabase project
     - `SUPABASE_KEY` - The public key of your Supabase project
 6. Run `npm install` to install the dependencies
 7. Run `npm run dev` to start the development server
-8. The development server should now be running on `localhost:8080`
+8. The development server should now be running on `localhost:3000`
 
 ## Support
 
