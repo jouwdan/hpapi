@@ -4,8 +4,10 @@
   "description": "Fastify API that queries a Supabase database for harry potter related data",
   "main": "src/server.ts",
   "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node .build/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "rm -rf .build && tsc-watch --onSuccess \"node .build/src/server.js\""
+    "dev": "rm -rf .build && tsc-watch --onSuccess \"node .build/src/server.js\""
   },
   "author": "Jordan Harrison",
   "license": "MIT",
