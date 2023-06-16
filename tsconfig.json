@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./",
+    "lib": ["esnext"],
+    "allowJs": true,
+    "target": "ESNext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": ".build",
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "preserveConstEnums": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "esModuleInterop": true
+  },
+  "include": ["index.ts", "src/**/*.ts"]
+}
