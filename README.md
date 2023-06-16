@@ -4,7 +4,7 @@ HPAPI is an API using [Fastify](https://www.fastify.io/) and queries a [Supabase
 
 It is deployed on [Render](https://render.com/) and can be accessed at [https://hpapi.onrender.com/](https://hpapi.onrender.com/).
 
-The data is taken from the [danielschuster-muc/potter-db](https://github.com/danielschuster-muc/potter-db) repo, converted to csv and imported to Supabase using [this python script](https://gist.github.com/jouwdan/4abd3ba46993a73b5bac14a6a54dfa6f).
+The data is taken from the [danielschuster-muc/potter-db](https://github.com/danielschuster-muc/potter-db) repo, converted to csv using [this python script](https://gist.github.com/jouwdan/4abd3ba46993a73b5bac14a6a54dfa6f) and imported to Supabase.
 
 ## Usage
 
