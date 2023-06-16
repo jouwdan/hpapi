@@ -1,6 +1,6 @@
 {
   "name": "hpapi",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Fastify API that queries a Supabase database for harry potter related data",
   "main": "src/server.ts",
   "scripts": {
