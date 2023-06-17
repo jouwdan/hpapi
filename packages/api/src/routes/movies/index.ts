@@ -60,7 +60,7 @@ const movies: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
       size,
     } = req.query;
   
-    let query = fastify.supabase.from('movies').select('*');
+    let query = fastify.supabase.from('movies').select('*', { count: 'exact' });
   
     const filterField = (field: any, value: any) => {
       if (value) {
@@ -106,8 +106,8 @@ const movies: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
       }
     }
   
-    const { data: movies, error } = await query;
-    return { data: movies, error };
+    const { data, count, error } = await query;
+    return { data, count, error };
   });
 }
 
