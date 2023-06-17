@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, Button, Flex, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Box, Button, Flex, Link, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 interface NavbarProps {
@@ -16,8 +16,12 @@ const Navbar: FC<NavbarProps> = ({ currentPath }) => {
           HPApi
         </Box>
         <Box>
-          <Button variant={currentPath === '/' ? 'solid' : 'ghost'}>Home</Button>
-          <Button variant={currentPath === '/about' ? 'solid' : 'ghost'}>About</Button>
+          <Link href="/">
+            <Button variant={currentPath === '/' ? 'solid' : 'ghost'}>Home</Button>
+          </Link>
+          <Link href="/about">
+            <Button variant={currentPath === '/about' ? 'solid' : 'ghost'}>About</Button>
+          </Link>
         </Box>
         <Button onClick={toggleColorMode}>
           {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
