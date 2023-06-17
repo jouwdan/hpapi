@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
+import { Box, Skeleton, Text, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight, FiSearch } from 'react-icons/fi'
 import { InfoCard } from '../../components/InfoCard';
 
@@ -23,7 +23,17 @@ function Spells() {
       </InputGroup>
       
       {isLoading ? (
-        <div>Loading...</div>
+        <SimpleGrid columns={{sm: 2, lg: 3, xl: 4}} spacing={4}>
+        {Array.from(Array(12).keys()).map((i) => (
+          <Skeleton isLoaded={!isLoading}>
+            <InfoCard
+              image={''}
+              href={''}
+              cardTitle={''}
+            />
+          </Skeleton>
+            ))}
+        </SimpleGrid>
       ) : error ? (
         <div>Error</div>
         ) : (
