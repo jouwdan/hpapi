@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, Menu } from '@chakra-ui/react';
+import { Box, Text, Image, SimpleGrid, useColorModeValue, Button } from '@chakra-ui/react';
 
 function Characters() {
   const [page, setPage] = useState(1);
@@ -43,7 +43,8 @@ function Characters() {
               </SimpleGrid>
               <Button onClick={() => setPage(page - 1)}>Previous Page</Button>
               <Button onClick={() => setPage(page + 1)}>Next Page</Button>
-
+              <Button onClick={() => setSize(size + 10)}>Page size + 10</Button>
+              <Button onClick={() => setSize(size - 10)}>Page size - 10</Button>
           </>
       )}
     </Box>
