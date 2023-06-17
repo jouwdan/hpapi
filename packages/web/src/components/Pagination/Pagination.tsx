@@ -63,7 +63,7 @@ const Pagination: FC<PaginationProps> = ({ page, setPage }) => {
         <Button
           colorScheme="blue"
           variant="outline"
-          onClick={() => setPage(page - 1)}
+          onClick={() => setPage(page + 2)}
         >
           {page + 2}
         </Button>
