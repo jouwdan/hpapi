@@ -78,7 +78,8 @@ const spells: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   
     if (page || size) {
       if (page && size) {
-        query = query.range(page - 1, page * size - 1);
+        const startIndex = (page - 1) * size;
+        query = query.range(startIndex, startIndex + size - 1);
       } else {
         throw new Error('page and size must be provided together');
       }
