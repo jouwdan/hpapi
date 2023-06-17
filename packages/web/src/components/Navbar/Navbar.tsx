@@ -19,26 +19,28 @@ interface NavbarProps {
 
 interface LinkItemProps {
   name: string;
+  link: string;
   icon: IconType;
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Home', icon: FiHome },
-  { name: 'Characters', icon: FiUsers },
-  { name: 'Spells', icon: FiFeather },
-  { name: 'Potions', icon: FiCoffee },
-  { name: 'Books', icon: FiBookOpen },
-  { name: 'Movies', icon: FiFilm },
+  { name: 'Home', link: '/', icon: FiHome },
+  { name: 'Characters', link: '/characters', icon: FiUsers },
+  { name: 'Spells', link: '/spells', icon: FiFeather },
+  { name: 'Potions', link: '/potions', icon: FiCoffee },
+  { name: 'Books', link: '/books', icon: FiBookOpen },
+  { name: 'Movies', link: '/movies', icon: FiFilm },
 ];
 
 interface NavItemProps extends FlexProps {
   icon: IconType;
+  link: string;
   children: string;
 }
 
-const NavItem = ({ icon, children, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
   return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <Link href={link} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
         align="center"
         p="4"
@@ -121,7 +123,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} link={link.link}>
           {link.name}
         </NavItem>
       ))}
