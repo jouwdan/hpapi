@@ -4,25 +4,18 @@ import {
   Box,
   Text,
   SimpleGrid,
-  Button,
   LinkBox,
   Select,
   Flex,
-  ButtonGroup,
   Spacer,
   InputGroup,
   Input,
   InputLeftElement,
   Skeleton,
 } from "@chakra-ui/react";
-import {
-  FiChevronLeft,
-  FiChevronsLeft,
-  FiChevronRight,
-  FiChevronsRight,
-  FiSearch,
-} from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { InfoCard } from "../../components/InfoCard";
+import { Pagination } from "../../components/Pagination";
 
 function Characters() {
   const [page, setPage] = useState(1);
@@ -76,66 +69,7 @@ function Characters() {
           </LinkBox>
           <Flex py={4}>
             <Spacer />
-            <ButtonGroup isAttached variant="outline">
-              <Button
-                colorScheme="blue"
-                variant="outline"
-                onClick={() => setPage(1)}
-              >
-                <FiChevronsLeft />
-              </Button>
-              {page > 1 ? (
-                <>
-                  <Button
-                    colorScheme="blue"
-                    variant="outline"
-                    onClick={() => setPage(page - 1)}
-                  >
-                    <FiChevronLeft />
-                  </Button>
-                  <Button
-                    colorScheme="blue"
-                    variant="outline"
-                    onClick={() => setPage(page - 1)}
-                  >
-                    {page - 1}
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button colorScheme="blue" variant="outline" isDisabled>
-                    <FiChevronLeft />
-                  </Button>
-                  <Button colorScheme="blue" variant="outline" isDisabled>
-                    {page - 1}
-                  </Button>
-                </>
-              )}
-              <Button colorScheme="blue" variant="solid">
-                {page}
-              </Button>
-              <Button
-                colorScheme="blue"
-                variant="outline"
-                onClick={() => setPage(page + 1)}
-              >
-                {page + 1}
-              </Button>
-              <Button
-                colorScheme="blue"
-                variant="outline"
-                onClick={() => setPage(page + 1)}
-              >
-                <FiChevronRight />
-              </Button>
-              <Button
-                colorScheme="blue"
-                variant="outline"
-                onClick={() => setPage(page + 10)}
-              >
-                <FiChevronsRight />
-              </Button>
-            </ButtonGroup>
+            <Pagination page={page} setPage={setPage} />
             <Select
               variant="outline"
               value={size}
