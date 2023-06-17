@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
+import { Box, Text, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, InputGroup, Input, InputLeftElement } from '@chakra-ui/react';
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight, FiSearch } from 'react-icons/fi'
 import { InfoCard } from '../../components/InfoCard';
 
@@ -16,6 +16,7 @@ function Characters() {
 
   return (
     <Box>
+    <Text as='h1' fontSize='3xl' fontWeight='bold' mb={4}>Characters</Text>
       <InputGroup mb={4}>
         <InputLeftElement pointerEvents="none" children={<FiSearch />} />
         <Input placeholder="Search..." value={searchTerm} onChange={handleSearchTermInput} />
