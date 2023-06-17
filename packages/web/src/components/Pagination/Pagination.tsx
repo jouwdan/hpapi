@@ -40,9 +40,6 @@ const Pagination: FC<PaginationProps> = ({ page, setPage }) => {
           <Button colorScheme="blue" variant="outline" isDisabled>
             <FiChevronLeft />
           </Button>
-          <Button colorScheme="blue" variant="outline" isDisabled>
-            {page - 1}
-          </Button>
         </>
       )}
       <Button colorScheme="blue" variant="solid">
@@ -55,6 +52,15 @@ const Pagination: FC<PaginationProps> = ({ page, setPage }) => {
       >
         {page + 1}
       </Button>
+      {page === 1 && (
+        <Button
+          colorScheme="blue"
+          variant="outline"
+          onClick={() => setPage(page - 1)}
+        >
+          {page + 2}
+        </Button>
+      )}
       <Button
         colorScheme="blue"
         variant="outline"
