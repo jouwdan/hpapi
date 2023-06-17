@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay, Select, Flex, ButtonGroup, Spacer } from '@chakra-ui/react';
+import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight } from 'react-icons/fi'
 
 function Characters() {
   const [page, setPage] = useState(1);
@@ -45,10 +46,32 @@ function Characters() {
                   ))}
                 </SimpleGrid>
               </LinkBox>
-              <Button onClick={() => setPage(page - 1)}>Previous Page</Button>
-              <Button onClick={() => setPage(page + 1)}>Next Page</Button>
-              <Button onClick={() => setSize(size + 10)}>Page size + 10</Button>
-              <Button onClick={() => setSize(size - 10)}>Page size - 10</Button>
+              <Flex py={4}>
+                <Spacer />
+                <ButtonGroup isAttached variant='outline'>
+                  <Button colorScheme='blue' variant='outline' onClick={() => setPage(1)}><FiChevronsLeft /></Button>
+                  {page > 1 ? (
+                    <>
+                      <Button colorScheme='blue' variant='outline' onClick={() => setPage(page - 1)}><FiChevronLeft /></Button>
+                      <Button colorScheme='blue' variant='outline' onClick={() => setPage(page - 1)}>{page - 1}</Button>
+                    </>
+                  ) : (
+                      <>
+                      <Button colorScheme='blue' variant='outline' isDisabled><FiChevronLeft /></Button>
+                    <Button colorScheme='blue' variant='outline' isDisabled>{page - 1}</Button>
+                      </>
+                  )}
+                  <Button colorScheme='blue' variant='solid'>{page}</Button>
+                  <Button colorScheme='blue' variant='outline' onClick={() => setPage(page + 1)}>{page + 1}</Button>
+                  <Button colorScheme='blue' variant='outline' onClick={() => setPage(page + 1)}><FiChevronRight /></Button>
+                  <Button colorScheme='blue' variant='outline' onClick={() => setPage(page + 10)}><FiChevronsRight /></Button>
+                </ButtonGroup>
+              <Select variant='outline' value={size} w={20} ml={4} onChange={(e) => setSize(parseInt(e.target.value))}>
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+                </Select>
+              </Flex>
           </>
       )}
     </Box>
