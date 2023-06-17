@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Text, Image, useColorModeValue } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 
 function Character() {
@@ -23,8 +23,6 @@ function Character() {
         <div>Error</div>
         ) : (
             <>
-              <LinkBox>
-                <SimpleGrid columns={{sm: 2, lg: 3, xl: 4}} spacing={4}>
                     <Box role={'group'}
                       p={6}
                       w={'full'}
@@ -34,7 +32,6 @@ function Character() {
                       pos={'relative'}
                       zIndex={1}>
                       <Image src={character.image} fallbackSrc='https://via.placeholder.com/150' mx='auto' my={8} alt={character.name} />
-                      <LinkOverlay href={`/characters/${character.id}`}>
                         <Text
                           color={'gray.500'}
                           fontWeight={600}
@@ -43,10 +40,7 @@ function Character() {
                           mt={1}>
                           {character.name}
                         </Text>
-                      </LinkOverlay>
                     </Box>
-                </SimpleGrid>
-              </LinkBox>
           </>
       )}
     </Box>
