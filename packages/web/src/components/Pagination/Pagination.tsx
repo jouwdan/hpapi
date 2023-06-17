@@ -15,11 +15,15 @@ interface PaginationProps {
 const Pagination: FC<PaginationProps> = ({ page, setPage }) => {
   return (
     <ButtonGroup isAttached variant="outline">
-      <Button colorScheme="blue" variant="outline" onClick={() => setPage(1)}>
-        <FiChevronsLeft />
-      </Button>
       {page > 1 ? (
         <>
+          <Button
+            colorScheme="blue"
+            variant="outline"
+            onClick={() => setPage(1)}
+          >
+            <FiChevronsLeft />
+          </Button>
           <Button
             colorScheme="blue"
             variant="outline"
@@ -37,6 +41,9 @@ const Pagination: FC<PaginationProps> = ({ page, setPage }) => {
         </>
       ) : (
         <>
+          <Button colorScheme="blue" variant="outline" isDisabled>
+            <FiChevronsLeft />
+          </Button>
           <Button colorScheme="blue" variant="outline" isDisabled>
             <FiChevronLeft />
           </Button>
