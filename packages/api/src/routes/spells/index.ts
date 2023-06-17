@@ -46,7 +46,7 @@ const spells: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
       size,
     } = req.query;
   
-    let query = fastify.supabase.from('spells').select('*');
+    let query = fastify.supabase.from('spells').select('*', { count: 'exact' });
   
     const filterField = (field: any, value: any) => {
       if (value) {
@@ -85,8 +85,8 @@ const spells: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
       }
     }
   
-    const { data: spells, error } = await query;
-    return { data: spells, error };
+    const { data, count, error } = await query;
+    return { data, count, error };
   });
 }
 
