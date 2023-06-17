@@ -69,7 +69,12 @@ function Spells() {
           </LinkBox>
           <Flex py={4}>
             <Spacer />
-            <Pagination page={page} setPage={setPage} />
+            <Pagination
+              page={page}
+              setPage={setPage}
+              pageSize={size}
+              count={data.count}
+            />
             <Select
               variant="outline"
               value={size}
