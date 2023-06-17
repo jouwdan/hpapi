@@ -39,7 +39,6 @@ interface NavItemProps extends FlexProps {
 }
 
 const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
-
   return (
     <Link href={link} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
@@ -49,8 +48,8 @@ const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
-        bg={(link.includes(window.location.pathname.substring(1)) && window.location.pathname.includes(link)) ? 'blue.400' : 'transparent'}
-        color={(link.includes(window.location.pathname.substring(1)) && window.location.pathname.includes(link)) ? 'white' : ''}
+        bg={(link.includes(window.location.pathname.substring(1, 5)) && window.location.pathname.includes(link)) ? 'blue.400' : 'transparent'}
+        color={(link.includes(window.location.pathname.substring(1, 5)) && window.location.pathname.includes(link)) ? 'white' : ''}
         _hover={{
           bg: 'blue.400',
           color: 'white',
