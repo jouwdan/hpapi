@@ -24,7 +24,7 @@ function Spells() {
       
       {isLoading ? (
         <SimpleGrid columns={{sm: 2, lg: 3, xl: 4}} spacing={4}>
-        {Array.from(Array(12).keys()).map((i) => (
+        {Array.from(Array(12).keys()).map(() => (
           <Skeleton isLoaded={!isLoading}>
             <InfoCard
               image={''}
