@@ -5,13 +5,14 @@ import { Navbar } from '../components/Navbar';
 const MyRoutes = () => {
   return (
     <>
-      <Navbar currentPath="/" />
+      <Navbar>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
             {/* Add more routes here */}
-        </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </Navbar>
     </>
   );
 };
