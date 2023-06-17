@@ -4,11 +4,11 @@ import { Box, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, In
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight, FiSearch } from 'react-icons/fi'
 import { InfoCard } from '../../components/InfoCard';
 
-function Characters() {
+function Spells() {
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(12);
   const [searchTerm, setSearchTerm] = useState('');
-  const { data, status } = useQuery<any>([`/characters?page=${page}&size=${size}&name=${searchTerm}`]);
+  const { data, status } = useQuery<any>([`/spells?page=${page}&size=${size}&name=${searchTerm}`]);
   const isLoading = status === 'loading';
   const error = status === 'error';
 
@@ -29,11 +29,11 @@ function Characters() {
             <>
               <LinkBox>
                 <SimpleGrid columns={{sm: 2, lg: 3, xl: 4}} spacing={4}>
-                  {data.data.map((character: any) => (
+                  {data.data.map((spell: any) => (
                     <InfoCard
-                      image={character.image}
-                      href={`/characters/${character.id}`}
-                      cardTitle={character.name}
+                      image={spell.image}
+                      href={`/spells/${spell.id}`}
+                      cardTitle={spell.name}
                     />
                   ))}
                 </SimpleGrid>
@@ -70,4 +70,4 @@ function Characters() {
   );
 }
 
-export default Characters;
+export default Spells;

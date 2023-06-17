@@ -6,6 +6,7 @@ import Home from './home';
 import Characters from './characters';
 import Character from './characters/character';
 import NotFound from './NotFound';
+import Spells from './spells';
 
 const MyRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const MyRoutes = () => {
             <Route path="/" element={<Home />} />
             <Route path="/characters" element={<Characters />} />
             <Route path="/characters/:id" element={<Character />} />
+            <Route path="/spells" element={<Spells />} />
             {/* Add more routes here */}
             <Route path="*" element={<NotFound />} />
           </Routes>
