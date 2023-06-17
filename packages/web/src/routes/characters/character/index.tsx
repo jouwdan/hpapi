@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Box, Text, Image, useColorModeValue, Flex } from "@chakra-ui/react";
+import { Box, Text, Image, Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 
 function Character() {
@@ -12,8 +12,6 @@ function Character() {
   if (data && data.data && data.data.length > 0) {
     character = data.data[0];
   }
-
-  const bgColor = useColorModeValue("white", "gray.800");
 
   return (
     <Box>
@@ -46,6 +44,7 @@ function Character() {
               alt={character.name}
             />
           </Flex>
+          <Box></Box>
         </>
       )}
     </Box>
