@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './home';
-import NotFound from './NotFound';
+
 import { Navbar } from '../components/Navbar';
+
+import Home from './home';
+import Characters from './characters';
+import NotFound from './NotFound';
 
 const MyRoutes = () => {
   return (
@@ -10,6 +13,7 @@ const MyRoutes = () => {
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/characters" element={<Characters />} />
             {/* Add more routes here */}
             <Route path="*" element={<NotFound />} />
           </Routes>
