@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Box, Text, Image, useColorModeValue } from "@chakra-ui/react";
+import { Box, Text, Image, useColorModeValue, Flex } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 
 function Character() {
@@ -23,33 +23,29 @@ function Character() {
         <div>Error</div>
       ) : (
         <>
-          <Box
-            role={"group"}
-            p={6}
-            w={"full"}
-            bg={bgColor}
-            boxShadow={"sm"}
-            rounded={"lg"}
-            pos={"relative"}
-            zIndex={1}
-          >
+          <Flex>
+            <Box>
+              <Text as="h1" fontSize="3xl" fontWeight="bold" mb={4}>
+                {character.name}
+              </Text>
+              <Text py={1}>
+                {character.species} {character.gender}
+              </Text>
+              <Text py={1}>
+                Born: {character.born ? character.born : "unknown"}
+              </Text>
+              <Text py={1}>
+                Died: {character.died ? character.died : "unknown"}
+              </Text>
+            </Box>
             <Image
               src={character.image}
               fallbackSrc="https://via.placeholder.com/150"
               mx="auto"
-              my={8}
+              my={4}
               alt={character.name}
             />
-            <Text
-              color={"gray.500"}
-              fontWeight={600}
-              fontSize={"sm"}
-              textTransform={"uppercase"}
-              mt={1}
-            >
-              {character.name}
-            </Text>
-          </Box>
+          </Flex>
         </>
       )}
     </Box>
