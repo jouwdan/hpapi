@@ -65,6 +65,7 @@ const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
         align="center"
         p="4"
         mx="4"
+        my="1"
         borderRadius="lg"
         role="group"
         cursor="pointer"
