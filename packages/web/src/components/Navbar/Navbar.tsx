@@ -133,7 +133,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   );
 };
 
-const Navbar: FC<NavbarProps> = ({ children, currentUrl }) => {
+const Navbar: FC<NavbarProps> = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
