@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay, Select, Flex, ButtonGroup, Spacer } from '@chakra-ui/react';
+import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay, Select, Flex, ButtonGroup, Spacer, Center } from '@chakra-ui/react';
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight } from 'react-icons/fi'
 
 function Characters() {
@@ -31,7 +31,9 @@ function Characters() {
                       rounded={'lg'}
                       pos={'relative'}
                       zIndex={1}>
-                      <Image src={character.image} fallbackSrc='https://via.placeholder.com/150' mx='auto' my={8} alt={character.name} />
+                      <Center w="200px" h="200px" mx='auto' my={4}>
+                        <Image src={character.image} fallbackSrc='https://via.placeholder.com/150' maxH='200px' maxW='200px' alt={character.name} />
+                      </Center>
                       <LinkOverlay href={`/characters/${character.id}`}>
                         <Text
                           color={'gray.500'}
