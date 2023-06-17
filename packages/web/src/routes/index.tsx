@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
+import NotFound from './NotFound';
 import { Navbar } from '../components/Navbar';
 
 const MyRoutes = () => {
@@ -10,6 +11,7 @@ const MyRoutes = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             {/* Add more routes here */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </Navbar>
