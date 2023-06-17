@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { Navbar } from '../components/Navbar';
+import { Navbar } from "../components/Navbar";
 
-import Home from './home';
-import Characters from './characters';
-import Character from './characters/character';
-import NotFound from './NotFound';
-import Spells from './spells';
+import Home from "./home";
+import Characters from "./characters";
+import Character from "./characters/character";
+import NotFound from "./NotFound";
+import Spells from "./spells";
 
 const MyRoutes = () => {
   return (
