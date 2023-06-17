@@ -4,6 +4,7 @@ import { Navbar } from '../components/Navbar';
 
 import Home from './home';
 import Characters from './characters';
+import Character from './characters/character';
 import NotFound from './NotFound';
 
 const MyRoutes = () => {
@@ -14,6 +15,7 @@ const MyRoutes = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/characters" element={<Characters />} />
+            <Route path="/characters/:id" element={<Character />} />
             {/* Add more routes here */}
             <Route path="*" element={<NotFound />} />
           </Routes>

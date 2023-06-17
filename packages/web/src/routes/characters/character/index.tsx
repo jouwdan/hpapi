@@ -1,13 +1,17 @@
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Text, Image, useColorModeValue } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
 
-function Characters() {
-  const [page, setPage] = useState(1);
-  const [size, setSize] = useState(10);
-  const { data, status } = useQuery<any>([`/characters?page=${page}&size=${size}`]);
+function Character() {
+  const params = useParams<{ id: string }>();
+  const { data, status } = useQuery<any>([`/characters?id=${params.id}`]);
   const isLoading = status === 'loading';
   const error = status === 'error';
+
+  let character = null;
+  if (data && data.data && data.data.length > 0) {
+    character = data.data[0];
+  }
 
   const bgColor = useColorModeValue('white', 'gray.800');
 
@@ -19,9 +23,6 @@ function Characters() {
         <div>Error</div>
         ) : (
             <>
-              <LinkBox>
-                <SimpleGrid columns={{sm: 2, lg: 3, xl: 4}} spacing={4}>
-                  {data.data.map((character: any) => (
                     <Box role={'group'}
                       p={6}
                       w={'full'}
@@ -31,7 +32,6 @@ function Characters() {
                       pos={'relative'}
                       zIndex={1}>
                       <Image src={character.image} fallbackSrc='https://via.placeholder.com/150' mx='auto' my={8} alt={character.name} />
-                      <LinkOverlay href={`/characters/${character.id}`}>
                         <Text
                           color={'gray.500'}
                           fontWeight={600}
@@ -40,19 +40,11 @@ function Characters() {
                           mt={1}>
                           {character.name}
                         </Text>
-                      </LinkOverlay>
                     </Box>
-                  ))}
-                </SimpleGrid>
-              </LinkBox>
-              <Button onClick={() => setPage(page - 1)}>Previous Page</Button>
-              <Button onClick={() => setPage(page + 1)}>Next Page</Button>
-              <Button onClick={() => setSize(size + 10)}>Page size + 10</Button>
-              <Button onClick={() => setSize(size - 10)}>Page size - 10</Button>
           </>
       )}
     </Box>
   );
 }
 
-export default Characters;
+export default Character;
