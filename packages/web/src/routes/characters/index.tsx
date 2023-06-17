@@ -12,7 +12,6 @@ import {
   Input,
   InputLeftElement,
   Skeleton,
-  Button,
   IconButton,
 } from "@chakra-ui/react";
 import { FiSearch, FiArrowDown, FiArrowUp } from "react-icons/fi";
