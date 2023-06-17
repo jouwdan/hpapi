@@ -1,12 +1,15 @@
 import { FC, ReactNode } from 'react'
 import { Box, BoxProps, Button, CloseButton, Drawer, DrawerContent, Flex, FlexProps, Icon, IconButton, Link, Text, useColorMode, useColorModeValue, useDisclosure } from '@chakra-ui/react'
-import { MoonIcon, SunIcon, HamburgerIcon } from '@chakra-ui/icons';
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
+  FiUsers,
+  FiFeather,
+  FiCoffee,
+  FiBookOpen,
+  FiFilm,
+  FiMoon,
+  FiSun,
+  FiMenu,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 
@@ -21,10 +24,11 @@ interface LinkItemProps {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Home', icon: FiHome },
-  { name: 'Trending', icon: FiTrendingUp },
-  { name: 'Explore', icon: FiCompass },
-  { name: 'Favourites', icon: FiStar },
-  { name: 'Settings', icon: FiSettings },
+  { name: 'Characters', icon: FiUsers },
+  { name: 'Spells', icon: FiFeather },
+  { name: 'Potions', icon: FiCoffee },
+  { name: 'Books', icon: FiBookOpen },
+  { name: 'Movies', icon: FiFilm },
 ];
 
 interface NavItemProps extends FlexProps {
@@ -79,10 +83,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       justifyContent="flex-start"
       {...rest}>
       <IconButton
-        variant="outline"
+        variant="ghost"
         onClick={onOpen}
         aria-label="open menu"
-        icon={<HamburgerIcon />}
+        icon={<FiMenu />}
       />
 
       <Text fontSize="2xl" ml="8" fontWeight="bold">
@@ -112,7 +116,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           HPApi
         </Text>
         <Button onClick={toggleColorMode} variant="ghost">
-          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          {colorMode === 'light' ? <FiMoon /> : <FiSun />}
         </Button>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
