@@ -1,14 +1,18 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
+import { Navbar } from '../components/Navbar';
 
 const MyRoutes = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Add more routes here */}
-      </Routes>
-    </Router>
+    <>
+      <Navbar currentPath="/" />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* Add more routes here */}
+        </Routes>
+      </Router>
+    </>
   );
 };
 
