@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, InputGroup, Input, InputLeftElement, Skeleton, Card } from '@chakra-ui/react';
+import { Box, Text, SimpleGrid, Button, LinkBox, Select, Flex, ButtonGroup, Spacer, InputGroup, Input, InputLeftElement, Skeleton } from '@chakra-ui/react';
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight, FiSearch } from 'react-icons/fi'
 import { InfoCard } from '../../components/InfoCard';
 
@@ -24,7 +24,7 @@ function Characters() {
       
       {isLoading ? (
         <SimpleGrid columns={{sm: 2, lg: 3, xl: 4}} spacing={4}>
-        {Array.from(Array(12).keys()).map((i) => (
+        {Array.from(Array(12).keys()).map(() => (
           <Skeleton isLoaded={!isLoading}>
             <InfoCard
               image={''}
