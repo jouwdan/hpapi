@@ -48,8 +48,10 @@ const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
+        bg={(link.includes(window.location.pathname.substring(1, 5)) && window.location.pathname.includes(link)) ? 'blue.400' : 'transparent'}
+        color={(link.includes(window.location.pathname.substring(1, 5)) && window.location.pathname.includes(link)) ? 'white' : ''}
         _hover={{
-          bg: 'cyan.400',
+          bg: 'blue.400',
           color: 'white',
         }}
         {...rest}>
@@ -131,7 +133,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   );
 };
 
-const Navbar: FC<NavbarProps> = ({ children }) => {
+const Navbar: FC<NavbarProps> = ({ children, currentUrl }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
