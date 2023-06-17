@@ -1,19 +1,24 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay, Select, Flex, ButtonGroup, Spacer, Center } from '@chakra-ui/react';
+import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay, Select, Flex, ButtonGroup, Spacer, Center, InputGroup, Input } from '@chakra-ui/react';
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight } from 'react-icons/fi'
 
 function Characters() {
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(10);
-  const { data, status } = useQuery<any>([`/characters?page=${page}&size=${size}`]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const { data, status } = useQuery<any>([`/characters?page=${page}&size=${size}&name=${searchTerm}`]);
   const isLoading = status === 'loading';
   const error = status === 'error';
+
+  const handleSearchTermInput = (event: any) => setSearchTerm(event.target.value);
 
   const bgColor = useColorModeValue('white', 'gray.800');
 
   return (
     <Box>
+        <Input placeholder="Search..." value={searchTerm} onChange={handleSearchTermInput} mb={4} />
+      
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
