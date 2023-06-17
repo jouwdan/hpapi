@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Box, Text, Image, SimpleGrid, useColorModeValue, Button, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Box, Text, Image, SimpleGrid, useColorModeValue, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 
 function Character() {
